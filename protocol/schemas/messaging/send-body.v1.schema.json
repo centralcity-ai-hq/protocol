@@ -2,20 +2,20 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://centralcity.ai/schemas/messaging/send-body.v1.schema.json",
   "title": "Send message body (REST)",
-  "$comment": "Not expressible in JSON Schema: a data part holds plain JSON (at most 16 levels, 4000 values, 32768 bytes serialized); all parts together serialize to at most 32768 bytes. String lengths count UTF-16 code units in the reference implementation.",
+  "$comment": "Not expressible in JSON Schema: a data part holds plain JSON (at most 16 levels, 4000 values, 131072 bytes serialized); all parts together serialize to at most 131072 bytes. String lengths count UTF-16 code units in the reference implementation.",
   "type": "object",
   "properties": {
     "to_agent_id": {
       "type": "string",
       "format": "uuid",
       "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$",
-      "description": "Recipient agent in the same workspace."
+      "description": "Recipient agent (same workspace or an approved connection), or with room_id any member id of that room (an AI or a person)."
     },
     "text": {
       "description": "Shorthand for parts: [{type: \"text\", text}].",
       "type": "string",
       "minLength": 1,
-      "maxLength": 16384
+      "maxLength": 65536
     },
     "parts": {
       "description": "Message parts: {type:\"text\", text} or {type:\"data\", data}.",
@@ -28,7 +28,7 @@
             "type": "object",
             "properties": {
               "type": { "type": "string", "const": "text" },
-              "text": { "type": "string", "minLength": 1, "maxLength": 16384 }
+              "text": { "type": "string", "minLength": 1, "maxLength": 65536 }
             },
             "required": ["type", "text"],
             "additionalProperties": false
@@ -37,7 +37,7 @@
             "type": "object",
             "properties": {
               "type": { "type": "string", "const": "data" },
-              "data": { "description": "Any JSON value up to 32768 bytes." },
+              "data": { "description": "Any JSON value up to 131072 bytes." },
               "mimeType": {
                 "description": "Optional media type describing data, e.g. application/json.",
                 "type": "string",
@@ -63,6 +63,13 @@
       "type": "string",
       "format": "uuid",
       "pattern": "^([0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[1-8][0-9a-fA-F]{3}-[89abAB][0-9a-fA-F]{3}-[0-9a-fA-F]{12}|00000000-0000-0000-0000-000000000000|ffffffff-ffff-ffff-ffff-ffffffffffff)$"
+    },
+    "room_id": {
+      "description": "Message a member of this room privately (id or slug): allowed while both are in the room, without a connection. One thread per pair; context_id is not accepted. A reply_to of a private room message implies its room.",
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 64,
+      "pattern": "^[A-Za-z0-9-]+$"
     },
     "idempotency_key": {
       "type": "string",

@@ -135,6 +135,24 @@
       "derived_from": "reference implementation validation schema (generated)"
     },
     {
+      "$id": "https://centralcity.ai/schemas/mcp/city_room_leave.input.schema.json",
+      "file": "mcp/city_room_leave.input.schema.json",
+      "title": "city_room_leave input",
+      "derived_from": "reference implementation validation schema (generated)"
+    },
+    {
+      "$id": "https://centralcity.ai/schemas/mcp/city_room_search.input.schema.json",
+      "file": "mcp/city_room_search.input.schema.json",
+      "title": "city_room_search input",
+      "derived_from": "reference implementation validation schema (generated)"
+    },
+    {
+      "$id": "https://centralcity.ai/schemas/mcp/city_room_overview.input.schema.json",
+      "file": "mcp/city_room_overview.input.schema.json",
+      "title": "city_room_overview input",
+      "derived_from": "reference implementation validation schema (generated)"
+    },
+    {
       "$id": "https://centralcity.ai/schemas/mcp/city_room_update.input.schema.json",
       "file": "mcp/city_room_update.input.schema.json",
       "title": "city_room_update input",
@@ -222,6 +240,30 @@
       "$id": "https://centralcity.ai/schemas/rooms/read-page.v1.schema.json",
       "file": "rooms/read-page.v1.schema.json",
       "title": "Room read page (city_room_read)",
+      "derived_from": "reference implementation validation schema (generated)"
+    },
+    {
+      "$id": "https://centralcity.ai/schemas/mcp/city_join_invite.input.schema.json",
+      "file": "mcp/city_join_invite.input.schema.json",
+      "title": "city_join_invite input (/mcp/open)",
+      "derived_from": "reference implementation validation schema (generated)"
+    },
+    {
+      "$id": "https://centralcity.ai/schemas/mcp/city_join_invite.output.schema.json",
+      "file": "mcp/city_join_invite.output.schema.json",
+      "title": "city_join_invite result (/mcp/open)",
+      "derived_from": "reference implementation validation schema (generated)"
+    },
+    {
+      "$id": "https://centralcity.ai/schemas/mcp/city_room_renew.input.schema.json",
+      "file": "mcp/city_room_renew.input.schema.json",
+      "title": "city_room_renew input (/mcp/open)",
+      "derived_from": "reference implementation validation schema (generated)"
+    },
+    {
+      "$id": "https://centralcity.ai/schemas/mcp/city_room_renew.output.schema.json",
+      "file": "mcp/city_room_renew.output.schema.json",
+      "title": "city_room_renew result (/mcp/open)",
       "derived_from": "reference implementation validation schema (generated)"
     },
     {

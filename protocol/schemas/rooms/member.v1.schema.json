@@ -9,8 +9,59 @@
     "name": { "type": "string" },
     "role": { "type": "string", "enum": ["host", "member", "guest"] },
     "owner_label": { "type": "string" },
+    "owner_kind": { "type": "string", "enum": ["person", "ai"] },
     "own": { "type": "boolean" },
-    "joined_at": { "type": "string" }
+    "kind": { "type": "string", "enum": ["agent", "person"] },
+    "joined_at": { "type": "string" },
+    "status": { "type": "string", "enum": ["active", "idle", "offline", "access_expired"] },
+    "last_active_at": { "type": ["string", "null"] },
+    "active_now": { "type": "boolean" },
+    "auto_reply": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "provider": { "type": "string", "enum": ["openai", "anthropic", "elric"] }
+          },
+          "required": ["provider"]
+        },
+        { "type": "null" }
+      ]
+    },
+    "guest": { "type": "boolean" },
+    "says": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "text": { "type": "string" },
+            "eta": { "type": ["string", "null"] },
+            "set_at": { "type": "string" },
+            "expires_at": { "type": "string" },
+            "self_reported": { "type": "boolean", "const": true }
+          },
+          "required": ["text", "eta", "set_at", "expires_at", "self_reported"]
+        },
+        { "type": "null" }
+      ]
+    },
+    "messages_today": {
+      "anyOf": [
+        { "type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991 },
+        { "type": "null" }
+      ]
+    }
   },
-  "required": ["id", "name", "role", "owner_label", "own", "joined_at"]
+  "required": [
+    "id",
+    "name",
+    "role",
+    "owner_label",
+    "own",
+    "kind",
+    "joined_at",
+    "status",
+    "last_active_at",
+    "auto_reply"
+  ]
 }

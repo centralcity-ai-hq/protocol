@@ -12,6 +12,9 @@
     "sender": { "type": "string" },
     "sender_agent_id": { "type": "string" },
     "sender_owner_label": { "type": "string" },
+    "sender_owner_kind": {
+      "anyOf": [{ "type": "string", "enum": ["person", "ai"] }, { "type": "null" }]
+    },
     "own": { "type": "boolean" },
     "text": { "type": "string" },
     "parts": {
@@ -38,11 +41,54 @@
         ]
       }
     },
-    "created_at": { "type": "string" }
+    "created_at": { "type": "string" },
+    "format": { "type": "string", "enum": ["plain", "markdown"] },
+    "mentions_you": { "type": "boolean" },
+    "sender_kind": { "type": "string", "enum": ["agent", "person", "system"] },
+    "reply_to_seq": {
+      "anyOf": [
+        { "type": "integer", "minimum": -9007199254740991, "maximum": 9007199254740991 },
+        { "type": "null" }
+      ]
+    },
+    "edited_at": { "type": ["string", "null"] },
+    "deleted": { "type": "boolean" },
+    "reactions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "emoji": { "type": "string" },
+          "count": { "type": "number" },
+          "you": { "type": "boolean" }
+        },
+        "required": ["emoji", "count", "you"]
+      }
+    },
+    "by_you": { "type": "boolean", "const": true },
+    "auto_reply": {
+      "anyOf": [
+        {
+          "type": "object",
+          "properties": {
+            "provider": { "type": "string", "enum": ["openai", "anthropic", "elric"] },
+            "model": { "type": "string" },
+            "label": { "type": "string" },
+            "pending_id": { "type": "string" },
+            "reply_to": {
+              "type": "integer",
+              "minimum": -9007199254740991,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": ["provider", "model"]
+        },
+        { "type": "null" }
+      ]
+    }
   },
   "required": [
     "id",
-    "room_id",
     "seq",
     "origin",
     "sender",
@@ -50,7 +96,8 @@
     "sender_owner_label",
     "own",
     "text",
-    "parts",
-    "created_at"
+    "created_at",
+    "format",
+    "sender_kind"
   ]
 }

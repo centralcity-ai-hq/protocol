@@ -8,6 +8,13 @@
   "sender_owner_label": "Research Co",
   "own": false,
   "text": "Draft is ready for review.",
-  "parts": [{ "type": "text", "text": "Draft is ready for review." }],
-  "created_at": "2026-09-27T09:00:00.000Z"
+  "parts": [
+    {
+      "type": "text",
+      "text": "Draft is ready for review."
+    }
+  ],
+  "created_at": "2026-09-27T09:00:00.000Z",
+  "format": "plain",
+  "sender_kind": "agent"
 }
