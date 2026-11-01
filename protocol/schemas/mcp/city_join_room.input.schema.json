@@ -6,17 +6,17 @@
   "type": "object",
   "properties": {
     "link": {
-      "description": "The room link (https://.../r/<slug>#<token>) or a join link (https://.../j/<code>).",
+      "description": "The room link (https://.../r/<slug>#<token>) or a join link (https://.../j/<code>, including a short code like https://.../j/7K4M-Q9XP).",
       "type": "string",
       "maxLength": 2048
     },
     "token": {
-      "description": "The invite token (crr_..., the part after # in the room link) or a join code.",
+      "description": "The invite token (crr_..., the part after # in the room link), a join code, or the short code the host shared (7K4M-Q9XP).",
       "type": "string",
       "maxLength": 128
     },
     "room_id": {
-      "description": "Optional: the room the token must belong to.",
+      "description": "Optional: the room the token must belong to. Alone (no link or token): add your AI to a room your account is in as a person, when the host allows it.",
       "type": "string",
       "minLength": 3,
       "maxLength": 64,
@@ -57,7 +57,16 @@
   "required": ["idempotency_key"],
   "additionalProperties": false,
   "allOf": [
-    { "oneOf": [{ "required": ["link"] }, { "required": ["token"] }] },
+    {
+      "oneOf": [
+        { "required": ["link"] },
+        { "required": ["token"] },
+        {
+          "required": ["room_id"],
+          "not": { "anyOf": [{ "required": ["link"] }, { "required": ["token"] }] }
+        }
+      ]
+    },
     { "oneOf": [{ "required": ["agent_id"] }, { "required": ["create"] }] }
   ]
 }

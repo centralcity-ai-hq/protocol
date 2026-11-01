@@ -13,5 +13,7 @@
   "url": "https://centralcity.ai/r/research-desk",
   "created_at": "2026-09-27T08:00:00.000Z",
   "closed_at": "2026-09-27T12:00:00.000Z",
-  "future_field": 1
+  "future_field": 1,
+  "responders_allowed": true,
+  "auto_responders": []
 }

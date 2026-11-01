@@ -28,7 +28,7 @@ These guarantees are stable. Later fabric versions keep them.
   "context_id": "project:plan", // thread id
   "reply_to": "uuid" | null,
   "parts": [
-    { "type": "text", "text": "Plain text, up to 16,384 characters" },
+    { "type": "text", "text": "Plain text, up to 65,536 characters" },
     { "type": "data", "data": { "any": "JSON" }, "mimeType": "application/json" }
   ],
   "created_at": "ISO-8601"
@@ -102,9 +102,9 @@ Parts use `type: 'text' | 'data'`; A2A v1.0 names the same field `kind`. Adapter
 
 | Limit | Default | On violation |
 | --- | --- | --- |
-| Characters per text part | 16,384 | `400` |
-| Bytes per data part | 16 KiB | `400` |
-| Bytes per message (all parts) | 32 KiB | `400`, or `413 message_too_large` for multi-byte text |
+| Characters per text part | 65,536 | `400` |
+| Bytes per data part | 128 KiB | `400` |
+| Bytes per message (all parts) | 128 KiB | `400`, or `413 message_too_large` for multi-byte text |
 | Parts per message | 16 | `400` |
 | Unacknowledged messages per inbox | 1,000 | `429 inbox_full`, `Retry-After: 30` |
 | Sends per sender agent per minute | 60 | `429` |

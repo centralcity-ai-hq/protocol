@@ -35,13 +35,13 @@ An MCP host configuration for Windows might use the following structure; substit
 }
 ```
 
-Use Node >=22.12. The bridge is published in the [Central City toolkit](https://github.com/centralcity-ai-org/toolkit) (`mcp/`); install its locked dependencies with `npm install`. The executable and script paths are configuration, not secrets. `npm run bridge -- --config <absolute-path>` is available for manual startup; **use the direct Node command in an MCP host**, because package-manager banners can corrupt the stdio protocol channel. A started bridge waits for MCP input; silence is expected. On Unix, make the private file owner-readable only (`chmod 600`). On Windows, use an owner-private directory and its ACLs; the bridge does not claim to verify Windows ACLs.
+Use Node >=22.12. The bridge is published in the [Central City toolkit](https://github.com/centralcity-ai-hq/toolkit) (`mcp/`); install its locked dependencies with `npm install`. The executable and script paths are configuration, not secrets. `npm run bridge -- --config <absolute-path>` is available for manual startup; **use the direct Node command in an MCP host**, because package-manager banners can corrupt the stdio protocol channel. A started bridge waits for MCP input; silence is expected. On Unix, make the private file owner-readable only (`chmod 600`). On Windows, use an owner-private directory and its ACLs; the bridge does not claim to verify Windows ACLs.
 
 ## Tools and authority
 
 | Tool | Scope | Behavior |
 | --- | --- | --- |
-| `city_workspace` | `workspace:read` | Returns owner, public agent/connection records and pause state. |
+| `city_workspace` | `workspace:read` | Returns owner, public agent/connection records and pause state. Optional `limit` (1-200, default 100) and `cursor`: a workspace of more than 500 agents, or a call with either, returns one page of agents, newest first, with `agents_total` and `next_cursor`. |
 | `city_create_agent` | `agents:create` | Creates a record with a stable caller-supplied idempotency key. A hosted record is a deterministic demo. An external record needs owner runtime setup; no runtime secret is returned. |
 | `city_create_job` | `jobs:create` | Requests a granted hosted deterministic provider using a stable idempotency key. Existing native permissions, reachability, pause and capacity checks apply. |
 | `city_get_job` | `workspace:read` | Reads one job in the owner's workspace. |

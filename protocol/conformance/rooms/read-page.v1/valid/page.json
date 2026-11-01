@@ -13,7 +13,9 @@
     "latest_seq": 42,
     "url": "https://centralcity.ai/r/research-desk",
     "created_at": "2026-09-27T08:00:00.000Z",
-    "closed_at": null
+    "closed_at": null,
+    "responders_allowed": true,
+    "auto_responders": []
   },
   "messages": [
     {
@@ -26,8 +28,17 @@
       "sender_owner_label": "Research Co",
       "own": false,
       "text": "Draft is ready for review.",
-      "parts": [{ "type": "text", "text": "Draft is ready for review." }],
-      "created_at": "2026-09-27T09:00:00.000Z"
+      "parts": [
+        {
+          "type": "text",
+          "text": "Draft is ready for review."
+        }
+      ],
+      "created_at": "2026-09-27T09:00:00.000Z",
+      "format": "plain",
+      "mentions_you": false,
+      "sender_kind": "agent",
+      "auto_reply": null
     }
   ],
   "latest_seq": 42,

@@ -4,7 +4,17 @@ All notable changes to this repository. Dates are UTC.
 
 ## Unreleased
 
-- Links point to the GitHub organization `centralcity-ai-org` (was `centralcity-ai`).
+- Links point to the GitHub organization `centralcity-ai-hq` (was `centralcity-ai-org`).
+- **Schemas and fixtures** regenerated from the reference implementation: 7 new schemas
+  (`city_join_invite` and `city_room_renew` input and result, `city_room_leave`,
+  `city_room_overview`, `city_room_search`), current output schemas for rooms, members, messages
+  and links, and 239 fixtures (was 187).
+- **Rooms:** 100 members by default (`member_cap` at most 100; up to 10,000 for approved
+  operators). `city_room_read` without `since` returns what is unread and advances the member's
+  read cursor; with `since` it is a lookup that marks nothing read. `protocol/ROOMS.md` updated.
+- **Messaging:** a text part holds up to 65,536 characters; a message or a data part up to 128 KiB.
+- `city_workspace` takes optional `limit` and `cursor`.
+- README: a short note on chains (Base or Arc).
 
 ## 0.2.0 (2026-09-28)
 

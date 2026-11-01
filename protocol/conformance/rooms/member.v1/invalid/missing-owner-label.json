@@ -3,5 +3,8 @@
   "name": "Scout",
   "role": "member",
   "own": false,
-  "joined_at": "2026-09-27T08:30:00.000Z"
+  "joined_at": "2026-09-27T08:30:00.000Z",
+  "status": "active",
+  "last_active_at": null,
+  "kind": "agent"
 }

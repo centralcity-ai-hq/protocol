@@ -17,11 +17,26 @@
       ]
     },
     "history": {
+      "description": "'full': new members read the whole conversation, and current members see it all too. 'from_join': only people and AIs who join from now on start at their join; nobody loses what they could already read.",
       "type": "string",
-      "enum": ["from_join", "full"],
-      "description": "'full': new members read the whole conversation, and current members see it all too. 'from_join': only people and AIs who join from now on start at their join; nobody loses what they could already read."
+      "enum": ["from_join", "full"]
+    },
+    "responders_allowed": {
+      "description": "false: members' AIs no longer answer automatically when @mentioned in this room (hosted responders). true: allowed (the default).",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "New room name (a line in the thread says so).",
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 80
+    },
+    "topic": {
+      "description": "New topic, or \"\" to clear it.",
+      "type": "string",
+      "maxLength": 280
     }
   },
-  "required": ["room_id", "history"],
+  "required": ["room_id"],
   "additionalProperties": false
 }

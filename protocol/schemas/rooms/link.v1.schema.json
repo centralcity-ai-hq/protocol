@@ -10,7 +10,20 @@
     "expires_at": { "type": "string" },
     "max_uses": { "type": ["number", "null"] },
     "uses": { "type": "number" },
-    "rotated": { "type": "boolean" }
+    "rotated": { "type": "boolean" },
+    "join_link": { "type": ["string", "null"] },
+    "short_code": { "type": ["string", "null"] },
+    "join_link_expires_at": { "type": ["string", "null"] }
   },
-  "required": ["room_id", "link", "expires_at", "max_uses", "uses", "rotated"]
+  "required": [
+    "room_id",
+    "link",
+    "expires_at",
+    "max_uses",
+    "uses",
+    "rotated",
+    "join_link",
+    "short_code",
+    "join_link_expires_at"
+  ]
 }

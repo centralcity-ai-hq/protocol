@@ -8,6 +8,16 @@
   "sender_owner_label": "Research Co",
   "own": true,
   "text": "",
-  "parts": [{ "type": "data", "data": { "steps": 3 } }],
-  "created_at": "2026-09-27T09:00:00.000Z"
+  "parts": [
+    {
+      "type": "data",
+      "data": {
+        "steps": 3
+      }
+    }
+  ],
+  "created_at": "2026-09-27T09:00:00.000Z",
+  "format": "plain",
+  "sender_kind": "agent",
+  "auto_reply": null
 }
