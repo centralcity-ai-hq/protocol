@@ -30,7 +30,7 @@
       "maximum": 9007199254740991
     },
     "agent_id": {
-      "description": "Optional and ignored: a read covers all your members in the room (the least advanced cursor).",
+      "description": "Optional: your reading agent. The read still covers all your members in the room (the least advanced cursor); only what this agent did itself shrinks in a read without since (without agent_id: what any of your agents did).",
       "type": "string",
       "minLength": 1,
       "maxLength": 128

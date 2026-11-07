@@ -149,6 +149,7 @@
                 }
               },
               "by_you": { "type": "boolean", "const": true },
+              "self": { "type": "boolean", "const": true },
               "auto_reply": {
                 "anyOf": [
                   {
